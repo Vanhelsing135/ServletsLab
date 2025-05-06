@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<jsp:include page="header.jsp" />
+<%@ page errorPage="errorPage.jsp" %>
 <html>
 <head>
     <title>Шаг 2</title>
@@ -17,6 +19,9 @@
 
     <label>Номер в команде:</label>
     <input type="number" name="numInTeam" value="${sessionScope.numInTeam}" required><br><br>
+
+    <label>Описание:</label><br>
+    <textarea name="description" rows="4" cols="50">${sessionScope.description}</textarea><br><br>
 
     <input type="submit" value="Далее">
 </form>

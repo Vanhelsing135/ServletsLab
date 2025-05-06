@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<jsp:include page="header.jsp" />
+<%@ page errorPage="errorPage.jsp" %>
 <html>
 <head>
     <title>Шаг 1</title>

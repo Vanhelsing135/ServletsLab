@@ -7,9 +7,18 @@ import java.io.IOException;
 @WebServlet("/step3")
 public class Step3Servlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         HttpSession session = req.getSession();
-        session.setAttribute("age", req.getParameter("age"));
+        int age = Integer.parseInt(req.getParameter("age"));
+        try {
+            if (age < 15 || age > 50) {
+                throw new IllegalArgumentException("Недопустимый возраст!");
+            }
+        } catch (IllegalArgumentException e) {
+            req.setAttribute("age", age);
+            req.getRequestDispatcher("/step3.jsp").forward(req, resp);
+        }
+        session.setAttribute("age", age);
         session.setAttribute("height", req.getParameter("height"));
         session.setAttribute("weight", req.getParameter("weight"));
         session.setAttribute("foot", req.getParameter("foot"));
@@ -31,7 +40,7 @@ public class Step3Servlet extends HttpServlet {
         if (weight != null && !req.getParameter("weight").isEmpty()) {
             session.setAttribute("weight", req.getParameter("weight"));
         }
-        session.setAttribute("foot", req.getParameter("age"));
+        session.setAttribute("foot", req.getParameter("foot"));
 
         req.getRequestDispatcher("step3.jsp").forward(req, resp);
     }
