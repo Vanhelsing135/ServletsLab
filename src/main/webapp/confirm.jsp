@@ -9,17 +9,20 @@
 <body>
 <h2>Подтверждение данных</h2>
 
-<p>Имя: ${sessionScope.name}</p>
-<p>Национальность: ${sessionScope.nationality}</p>
-<p>Клуб: ${sessionScope.club}</p>
-<p>Позиция: ${sessionScope.position}</p>
-<p>Номер в команде: ${sessionScope.numInTeam}</p>
-<%--<p>Описание: ${sessionScope.description}</p>--%>
-<p>Возраст: ${sessionScope.age}</p>
-<p>Рост: ${sessionScope.height}</p>
-<p>Вес: ${sessionScope.weight}</p>
-<%--<p>Рабочая нога: ${sessionScope.foot}</p>--%>
-<tags:myTag label="Рабочая нога" value="${sessionScope.foot}" label1="Описание">${sessionScope.description}</tags:myTag>
+<tags:myTag
+        name="${sessionScope.name}"
+        nationality="${sessionScope.nationality}"
+        club="${sessionScope.club}"
+        position="${sessionScope.position}"
+        numInTeam="${sessionScope.numInTeam}"
+        age="${sessionScope.age}"
+        height="${sessionScope.height}"
+        weight="${sessionScope.weight}"
+        foot="${sessionScope.foot}">
+
+
+    <p><strong>Описание:</strong> ${sessionScope.description}</p>
+</tags:myTag>
 
 <form action="confirm" method="post">
     <input type="submit" value="Подтвердить">
